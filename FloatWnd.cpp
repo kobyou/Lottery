@@ -153,7 +153,7 @@ void CFloatWnd::OnMenuHide()
 		pParent->ShowWindow(SW_SHOW);
 }
 
-UINT CFloatWnd::OnNcHitTest(CPoint pt)
+LRESULT CFloatWnd::OnNcHitTest(CPoint pt)
 {
 	UINT nHitTest = CDialog::OnNcHitTest(pt);
 	

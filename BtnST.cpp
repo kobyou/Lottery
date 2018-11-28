@@ -11,7 +11,7 @@ static char THIS_FILE[] = __FILE__;
 // CButtonST
 
 // Mask for control's type
-#define BS_TYPEMASK SS_TYPEMASK
+//#define BS_TYPEMASK SS_TYPEMASK
 
 CButtonST::CButtonST()
 {
@@ -1682,7 +1682,7 @@ DWORD CButtonST::SetURL(LPCTSTR lpszURL)
 	if (lpszURL)
 	{
 		// Store the URL
-		_tcsncpy(m_szURL, lpszURL, _MAX_PATH);
+		_tcsncpy_s(m_szURL, lpszURL, _MAX_PATH);
 	} // if
 
 	return BTNST_OK;

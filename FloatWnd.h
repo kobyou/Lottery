@@ -54,7 +54,7 @@ protected:
 	virtual BOOL OnInitDialog();
 	afx_msg void OnMenuCancle();
 	afx_msg void OnMenuHide();
-	afx_msg UINT OnNcHitTest(CPoint pt);
+	afx_msg LRESULT OnNcHitTest(CPoint pt);
 	afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnNcLButtonDblClk(UINT nFlags, CPoint point);
 	//}}AFX_MSG

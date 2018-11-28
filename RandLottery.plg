@@ -1,0 +1,43 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: RandLottery - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\koby\AppData\Local\Temp\RSP897C.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/RandLottery.pdb" /debug /machine:I386 /out:"D:\È≥“Ù≥ÈΩ±\RandLottery.exe" /pdbtype:sept 
+.\Debug\BCMenu.obj
+.\Debug\BtnST.obj
+.\Debug\CeXDib.obj
+.\Debug\ColorStatic.obj
+.\Debug\EditListCtrl.obj
+.\Debug\excel.obj
+.\Debug\FloatWnd.obj
+.\Debug\GetHardSoftInfo.obj
+.\Debug\HYPERLINK.OBJ
+.\Debug\ItemSetting.obj
+.\Debug\MainSetting.obj
+.\Debug\MD5Checksum.obj
+.\Debug\MusicSetting.obj
+.\Debug\RandLottery.obj
+.\Debug\RandLotteryDlg.obj
+.\Debug\Setting.obj
+.\Debug\ShadeButtonST.obj
+.\Debug\ShowResult.obj
+.\Debug\StdAfx.obj
+.\Debug\RandLottery.res
+]
+Creating command line "link.exe @C:\Users\koby\AppData\Local\Temp\RSP897C.tmp"
+<h3>Output Window</h3>
+Linking...
+
+
+
+<h3>Results</h3>
+RandLottery.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

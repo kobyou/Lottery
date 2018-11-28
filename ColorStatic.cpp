@@ -487,7 +487,7 @@ void CColorStatic::SetTextFont(int a, LPCTSTR b)
 	LOGFONT lf;
 	memset(&lf, 0, sizeof(LOGFONT));       // zero out structure
 	lf.lfHeight=a;
-	strcpy(lf.lfFaceName, b);        // request a face name "Arial"
+	strcpy_s(lf.lfFaceName, b);        // request a face name "Arial"
 	
 	m_font.CreateFontIndirect(&lf);
 	m_bUseSysFont=false;

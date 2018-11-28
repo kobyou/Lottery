@@ -27,6 +27,8 @@
 #include "BCMenu.h"        // BCMenu class declaration
 #include <afxpriv.h>       //SK: makes A2W and other spiffy AFX macros work
 
+
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE
@@ -207,7 +209,7 @@ void BCMenuData::SetWideString(const wchar_t *szWideString)
     {
 		m_szMenuText = new wchar_t[sizeof(wchar_t)*(wcslen(szWideString)+1)];
 		if (m_szMenuText)
-			wcscpy(m_szMenuText,szWideString);
+			wcscpy_s(m_szMenuText, wcslen(m_szMenuText),szWideString);
     }
 	else
 		m_szMenuText=NULL;//set to NULL so we need not bother about dangling non-NULL Ptrs
@@ -1663,7 +1665,7 @@ BOOL BCMenu::LoadMenu(LPCTSTR lpszResourceName)
 		
 		nLen = 0;
 		szCaption=new wchar_t[wcslen((wchar_t *)pTp)+1];
-		wcscpy(szCaption,(wchar_t *)pTp);
+		wcscpy_s(szCaption, wcslen(szCaption),(wchar_t *)pTp);
 		pTp=&pTp[(wcslen((wchar_t *)pTp)+1)*sizeof(wchar_t)];//modified SK
 		
 		// Handle popup menus first....
@@ -1945,7 +1947,7 @@ void BCMenu::SynchronizeMenu(void)
 	UINT submenu,nID=0,state,j;
 	
 	InitializeMenuList(0);
-	for(j=0;j<GetMenuItemCount();++j){
+	for(j=0;j<(UINT)GetMenuItemCount();++j){
 		mdata=NULL;
 		state=GetMenuState(j,MF_BYPOSITION);
 		if(state&MF_POPUP){
@@ -2468,7 +2470,7 @@ BOOL BCMenu::RemoveMenu(UINT uiId,UINT nFlags)
 				}
 				int num = pSubMenu->GetMenuItemCount();
 				for(int i=num-1;i>=0;--i)pSubMenu->RemoveMenu(i,MF_BYPOSITION);
-				for(i=m_MenuList.GetUpperBound();i>=0;i--){
+				for(int i=m_MenuList.GetUpperBound();i>=0;i--){
 					if(m_MenuList[i]->nID==(UINT)pSubMenu->m_hMenu){
 						delete m_MenuList.GetAt(i);
 						m_MenuList.RemoveAt(i);
@@ -2531,7 +2533,7 @@ BOOL BCMenu::DeleteMenu(UINT uiId,UINT nFlags)
 				}
 				int num = pSubMenu->GetMenuItemCount();
 				for(int i=num-1;i>=0;--i)pSubMenu->DeleteMenu(i,MF_BYPOSITION);
-				for(i=m_MenuList.GetUpperBound();i>=0;i--){
+				for(int i=m_MenuList.GetUpperBound();i>=0;i--){
 					if(m_MenuList[i]->nID==(UINT)pSubMenu->m_hMenu){
 						delete m_MenuList.GetAt(i);
 						m_MenuList.RemoveAt(i);

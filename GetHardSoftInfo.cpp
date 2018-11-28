@@ -39,12 +39,12 @@ BOOL CGetMachineInfo::ReturnInfo(int drive, DWORD diskdata [256])
    __int64 bytes = 0;
 
       //  copy the hard drive serial number to the buffer
-   strcpy (string1, ConvertToString (diskdata, 10, 19));
+   strcpy_s(string1, ConvertToString (diskdata, 10, 19));
    if (0 == HardDriveSerialNumber [0] &&
             //  serial number must be alphanumeric
             //  (but there can be leading spaces on IBM drives)
        (isalnum (string1 [0]) || isalnum (string1 [19])))
-      strcpy (HardDriveSerialNumber, string1);
+      strcpy_s (HardDriveSerialNumber, string1);
 
 //#ifdef PRINTING_TO_CONSOLE_ALLOWED
 
@@ -125,7 +125,7 @@ static char string [1024];
    return string;
 }
 //
- CGetMachineInfo::DoIDENTIFY(HANDLE hPhysicalDriveIOCTL, PSENDCMDINPARAMS pSCIP,
+ int CGetMachineInfo::DoIDENTIFY(HANDLE hPhysicalDriveIOCTL, PSENDCMDINPARAMS pSCIP,
                  PSENDCMDOUTPARAMS pSCOP, BYTE bIDCmd, BYTE bDriveNum,
                  PDWORD lpcbBytesReturned)
 {
@@ -166,7 +166,7 @@ int CGetMachineInfo::ReadPhysicalDriveInNT(void)
          //  and exit if can't.
       char driveName [256];
 
-      sprintf (driveName, "\\\\.\\PhysicalDrive%d", drive);
+      sprintf_s (driveName, "\\\\.\\PhysicalDrive%d", drive);
 
          //  Windows NT, Windows 2000, must have admin rights
       hPhysicalDriveIOCTL = CreateFile (driveName,
@@ -332,7 +332,7 @@ int CGetMachineInfo::ReadIdeDriveAsScsiDriveInNT(void)
 
          //  Try to get a handle to PhysicalDrive IOCTL, report failure
          //  and exit if can't.
-      sprintf (driveName, "\\\\.\\Scsi%d:", controller);
+      sprintf_s (driveName, "\\\\.\\Scsi%d:", controller);
          //  Windows NT, Windows 2000, any rights should do
       hScsiDriveIOCTL = CreateFile (driveName,
                                GENERIC_READ | GENERIC_WRITE, 
@@ -359,7 +359,7 @@ int CGetMachineInfo::ReadIdeDriveAsScsiDriveInNT(void)
             p -> Timeout = 10000;
             p -> Length = SENDIDLENGTH;
             p -> ControlCode = IOCTL_SCSI_MINIPORT_IDENTIFY;
-            strncpy ((char *) p -> Signature, "SCSIDISK", 8);
+            strncpy_s ((char *) p -> Signature, 8,"SCSIDISK", 8);
   
             pin -> irDriveRegs.bCommandReg = IDE_ATA_IDENTIFY;
             pin -> bDriveNumber = drive;

@@ -638,7 +638,7 @@ void CTitleSetting::OnButtonRankShowFont()
 	HDC hDC=GetDC()->m_hDC;
 	LOGFONT lf={0};//设置某些字体特征
 	lf.lfWeight=FW_NORMAL;
-	strcpy(lf.lfFaceName,m_strRankShowFontName);
+	strcpy_s(lf.lfFaceName,m_strRankShowFontName);
 	lf.lfCharSet=DEFAULT_CHARSET;
 	lf.lfHeight=-MulDiv(m_nRankShowFontSize,GetDeviceCaps(hDC,LOGPIXELSY),72);
 	CFontDialog dlg(&lf);
@@ -673,7 +673,7 @@ void CTitleSetting::OnButtonTitleFont()
 	HDC hDC=GetDC()->m_hDC;
 	LOGFONT lf={0};//设置某些字体特征
 	lf.lfWeight=FW_NORMAL;
-	strcpy(lf.lfFaceName,m_strTitleFontName);
+	strcpy_s(lf.lfFaceName,m_strTitleFontName);
 	lf.lfCharSet=DEFAULT_CHARSET;
 	lf.lfHeight=-MulDiv(m_nTitleFontSize,GetDeviceCaps(hDC,LOGPIXELSY),72);
 	CFontDialog dlg(&lf);
@@ -695,7 +695,7 @@ void CTitleSetting::OnButtonTitleFont2()
 	HDC hDC=GetDC()->m_hDC;
 	LOGFONT lf={0};//设置某些字体特征
 	lf.lfWeight=FW_NORMAL;
-	strcpy(lf.lfFaceName,m_strTitle2FontName);
+	strcpy_s(lf.lfFaceName,m_strTitle2FontName);
 	lf.lfCharSet=DEFAULT_CHARSET;
 	lf.lfHeight=-MulDiv(m_nTitle2FontSize,GetDeviceCaps(hDC,LOGPIXELSY),72);
 	CFontDialog dlg(&lf);
@@ -717,7 +717,7 @@ void CTitleSetting::OnButtonIDFont()
 	HDC hDC=GetDC()->m_hDC;
 	LOGFONT lf={0};//设置某些字体特征
 	lf.lfWeight=FW_NORMAL;
-	strcpy(lf.lfFaceName,m_strIDFontName);
+	strcpy_s(lf.lfFaceName,m_strIDFontName);
 	lf.lfCharSet=DEFAULT_CHARSET;
 	lf.lfHeight=-MulDiv(m_nIDFontSize,GetDeviceCaps(hDC,LOGPIXELSY),72);
 
@@ -859,7 +859,7 @@ void CTitleSetting::OnButtonItemShowFont()
 	HDC hDC=GetDC()->m_hDC;
 	LOGFONT lf={0};//设置某些字体特征
 	lf.lfWeight=FW_NORMAL;
-	strcpy(lf.lfFaceName,m_strItemShowFontName);
+	strcpy_s(lf.lfFaceName,m_strItemShowFontName);
 	lf.lfCharSet=DEFAULT_CHARSET;
 	lf.lfHeight=-MulDiv(m_nItemShowFontSize,GetDeviceCaps(hDC,LOGPIXELSY),72);
 	CFontDialog dlg(&lf);
