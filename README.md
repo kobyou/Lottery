@@ -1,2 +1,2 @@
 # Lottery
-random lottery tool
+随机抽奖软件
